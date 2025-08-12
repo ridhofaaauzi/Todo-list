@@ -14,7 +14,6 @@ export default function App() {
   const [task, setTask] = useState("");
   const [darkMode, setDarkMode] = useState(false);
 
-  // state untuk edit mode
   const [editingTask, setEditingTask] = useState(null);
   const [editContent, setEditContent] = useState("");
 
@@ -83,19 +82,16 @@ export default function App() {
     });
   };
 
-  // mulai edit: set editingTask dan isi editContent
   const startEditTask = (columnId, taskId, currentContent) => {
     setEditingTask({ columnId, taskId });
     setEditContent(currentContent);
   };
 
-  // batal edit
   const cancelEditTask = () => {
     setEditingTask(null);
     setEditContent("");
   };
 
-  // simpan hasil edit ke state columns
   const saveEditTask = () => {
     if (!editContent.trim()) return alert("Task content cannot be empty");
     const { columnId, taskId } = editingTask;
